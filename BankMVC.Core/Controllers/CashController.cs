@@ -27,7 +27,9 @@ namespace BankMVC.Controllers
             return View();
         }
         
-        
+        /// <summary>
+        /// Deducts amount of money from user account and redirects to Success view.
+        /// </summary>
         [HttpPost]
         public IActionResult CashRequest(IFormCollection collection)
         {
@@ -55,7 +57,10 @@ namespace BankMVC.Controllers
         {
             return View();
         }
-
+        
+        /// <summary>
+        /// Deducts amount from user. Creates transaction and saves changes to database.
+        /// </summary>
         [HttpGet]
         public IActionResult DeductCashAmount(double amount)
         {
@@ -76,19 +81,28 @@ namespace BankMVC.Controllers
             _bankService.DatabaseSaveChanges();
             return RedirectToAction("DeductSuccess", "Cash");
         }
-
+        
+        /// <summary>
+        /// get -- success message, redirect after 10 seconds
+        /// </summary>
         [HttpGet]
         public IActionResult DeductSuccess()
         {
             return View();
         }
-
+        
+        /// <summary>
+        /// get -- here user enters a value
+        /// </summary>
         [HttpGet]
         public IActionResult OtherAmount()
         {
             return View();
         }
-
+        
+        /// <summary>
+        /// post -- deducts amount from user and redirect to success
+        /// </summary>
         [HttpPost]
         public IActionResult OtherAmount(IFormCollection collection)
         {

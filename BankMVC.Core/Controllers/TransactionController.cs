@@ -15,13 +15,19 @@ namespace BankMVC.Controllers
         {
             _bankService = bankService;
         }
-
+        
+        /// <summary>
+        /// Get request. User enters pin here.
+        /// </summary>
         [HttpGet]
         public IActionResult DisplayTransactions()
         {
             return View();
         }
-
+        
+        /// <summary>
+        /// Post request. User clicks submit here.
+        /// </summary>
         [HttpPost]
         public IActionResult DisplayTransactions(IFormCollection collection)
         {
@@ -33,7 +39,10 @@ namespace BankMVC.Controllers
                 throw new InvalidOperationException("Wrong user credits.");
             return RedirectToAction("UserTransactions", "Transaction");
         }
-
+        
+        /// <summary>
+        /// Get request. User is redirected to list of his transactions.
+        /// </summary>
         [HttpGet]
         public IActionResult UserTransactions()
         {

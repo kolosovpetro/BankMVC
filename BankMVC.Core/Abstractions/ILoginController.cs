@@ -5,12 +5,13 @@ namespace BankMVC.Abstractions
 {
     public interface ILoginController
     {
-        // login get
+        // get -- user enters username and pin
         IActionResult Login();
 
-        // login post
+        // post -- user clicks submit
         IActionResult Login(IFormCollection collection);
-
+        
+        // get -- redirects to user dashboard
         IActionResult SuccessLoginScreen();
     }
 }
