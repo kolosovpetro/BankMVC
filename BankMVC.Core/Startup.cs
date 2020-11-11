@@ -1,5 +1,6 @@
 using BankMVC.Data.Extensions;
 using BankMVC.Repositories.Extensions;
+using BankMVC.Services.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -16,14 +17,15 @@ namespace BankMVC
         }
 
         public IConfiguration Configuration { get; }
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
             services.AddDataLayerWithSqlServer(Configuration);
             services.AddRepositories();
+            services.AddServices();
         }
-        
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

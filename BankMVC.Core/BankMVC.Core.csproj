@@ -8,6 +8,7 @@
     <ItemGroup>
       <ProjectReference Include="..\BankMVC.Data\BankMVC.Data.csproj" />
       <ProjectReference Include="..\BankMVC.Repositories\BankMVC.Repositories.csproj" />
+      <ProjectReference Include="..\BankMVC.Services\BankMVC.Services.csproj" />
       <ProjectReference Include="..\BankMVC.ViewModel\BankMVC.ViewModel.csproj" />
     </ItemGroup>
 

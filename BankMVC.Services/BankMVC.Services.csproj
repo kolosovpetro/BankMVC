@@ -5,8 +5,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Implementations" />
-      <Folder Include="Interfaces" />
+      <ProjectReference Include="..\BankMVC.Auxiliary\BankMVC.Auxiliary.csproj" />
+      <ProjectReference Include="..\BankMVC.Repositories\BankMVC.Repositories.csproj" />
+      <ProjectReference Include="..\BankMVC.ViewModel\BankMVC.ViewModel.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Extensions" />
     </ItemGroup>
 
 </Project>

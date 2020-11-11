@@ -1,5 +1,4 @@
-﻿using BankMVC.Repositories.Implementations;
-using BankMVC.Repositories.Interfaces;
+﻿using BankMVC.Repositories.Repos;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BankMVC.Repositories.Extensions
@@ -8,7 +7,9 @@ namespace BankMVC.Repositories.Extensions
     {
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
-            return services.AddTransient(typeof(IRepository<>), typeof(RepositoryBase<>));
+            services.AddTransient<UserRepository, UserRepository>();
+            services.AddTransient<TransactionRepository, TransactionRepository>();
+            return services;
         }
     }
 }
