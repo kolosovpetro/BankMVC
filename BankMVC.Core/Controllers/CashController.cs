@@ -78,12 +78,17 @@ namespace BankMVC.Controllers
             if (user == null)
                 throw new InvalidOperationException("Wrong user credits.");
 
-            user.Balance -= amount;
-            _bankService.UpdateUser(user);
-            var transaction = new Transaction(user.UserName, -amount, DateTime.Now);
-            _bankService.AddTransaction(transaction);
-            _bankService.DatabaseSaveChanges();
-            return RedirectToAction("DeductSuccess", "Cash");
+            if (user.Balance >= amount && amount > 0)
+            {
+                user.Balance -= amount;
+                _bankService.UpdateUser(user);
+                var transaction = new Transaction(user.UserName, -amount, DateTime.Now);
+                _bankService.AddTransaction(transaction);
+                _bankService.DatabaseSaveChanges();
+                return RedirectToAction("DeductSuccess", "Cash");
+            }
+
+            return RedirectToAction("CashRequestMenu", "Cash");
         }
 
         /// <summary>
