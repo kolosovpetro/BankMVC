@@ -5,18 +5,21 @@
     Layout = "_Layout";
 }
 
-<h2>Cash withdraw</h2>
-<ul>
+<h3>Cash withdraw</h3>
+<ul class="list-unstyled">
     <li>
-        @Html.ActionLink("50", "DeductCashAmount", "Cash", new {amount = 50})
+        @Html.ActionLink("50", "DeductCashAmount", "Cash", new {amount = 50}, new {@class = "btn btn-primary"})
     </li>
+    <br>
     <li>
-        @Html.ActionLink("100", "DeductCashAmount", "Cash", new {amount = 100})
+        @Html.ActionLink("100", "DeductCashAmount", "Cash", new {amount = 100}, new {@class = "btn btn-primary"})
     </li>
+    <br>
     <li>
-        @Html.ActionLink("200", "DeductCashAmount", "Cash", new {amount = 200})
+        @Html.ActionLink("200", "DeductCashAmount", "Cash", new {amount = 200}, new {@class = "btn btn-primary"})
     </li>
+    <br>
     <li>
-        @Html.ActionLink("Other sum", "OtherAmount", "Cash")
+        @Html.ActionLink("Other sum", "OtherAmount", "Cash", null, new {@class = "btn btn-primary"})
     </li>
 </ul>

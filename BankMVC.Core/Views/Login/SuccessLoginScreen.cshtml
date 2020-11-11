@@ -3,15 +3,17 @@
     Layout = "_Layout";
 }
 
-<h2>Main menu</h2>
-<ul>
+<h3>Main menu</h3>
+<ul class="list-unstyled">
     <li>
-        <a asp-controller="Balance" asp-action="CheckBalance">Balance</a>
+        <a asp-controller="Balance" asp-action="CheckBalance" class="btn btn-primary">Balance</a>
     </li>
+    <br>
     <li>
-        <a asp-controller="Cash" asp-action="CashRequest">Cash</a>
+        <a asp-controller="Cash" asp-action="CashRequest" class="btn btn-primary">Cash</a>
     </li>
+    <br>
     <li>
-        <a asp-controller="Transaction" asp-action="DisplayTransactions">Transactions</a>
+        <a asp-controller="Transaction" asp-action="DisplayTransactions" class="btn btn-primary">Transactions</a>
     </li>
 </ul>
