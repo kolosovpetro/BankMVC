@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq.Expressions;
 using BankMVC.Auxiliary.Decode;
 using BankMVC.Auxiliary.Encode;
+using BankMVC.Model.Models;
 using BankMVC.Repositories.Repos;
 using BankMVC.Services.Interfaces;
 using BankMVC.ViewModel.ViewModels;
@@ -38,6 +40,32 @@ namespace BankMVC.Services.Implementations
             };
 
             return balanceModel;
+        }
+
+        public string Encode(int pin)
+        {
+            return new Encoder().Encode(pin);
+        }
+
+        public int Decode(string pin)
+        {
+            return new Decoder().Decode(pin);
+        }
+
+        public User GetUserByNameAndPin(Expression<Func<User, bool>> @where)
+        {
+            var user = _userRepository.Get(where);
+            return user;
+        }
+
+        public void DatabaseSaveChanges()
+        {
+            _userRepository.SaveChanges();
+        }
+
+        public void UpdateUser(User user)
+        {
+            _userRepository.Update(user);
         }
     }
 }

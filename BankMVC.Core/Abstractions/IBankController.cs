@@ -18,6 +18,10 @@ namespace BankMVC.Abstractions
         IActionResult CheckBalance(IFormCollection collection);
 
         IActionResult BalanceDashboard(UserBalanceViewModel model);
+
+        IActionResult CashWithdrawMenu();
+
+        IActionResult WithdrawMoney(double amount);
         // // balance get
         // IActionResult Balance();
         // // balance post
