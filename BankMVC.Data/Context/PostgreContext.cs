@@ -17,11 +17,11 @@ namespace BankMVC.Data.Context
         {
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseNpgsql(
-                "Server=localhost;User Id=postgres;Password=postgres;Database=BankMVC;");
-        }
+        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        // {
+        //     optionsBuilder.UseNpgsql(
+        //         "Server=localhost;User Id=postgres;Password=postgres;Database=BankMVC;");
+        // }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
