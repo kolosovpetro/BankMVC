@@ -5,4 +5,8 @@
         <RootNamespace>BankMVC</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\BankMVC.ViewModel\BankMVC.ViewModel.csproj" />
+    </ItemGroup>
+
 </Project>
