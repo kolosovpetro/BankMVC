@@ -1,0 +1,51 @@
+﻿@model IEnumerable<BankMVC.Model.Models.Transaction>
+
+@{
+    ViewData["Title"] = "UserTransactions";
+}
+
+<h1>User Transactions</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionDate)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionDate)
+            </td>
+            @* <td> *@
+            @*     @Html.ActionLink("Edit", "Edit", new {/* id=item.PrimaryKey */}) | *@
+            @*     @Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey */}) | *@
+            @*     @Html.ActionLink("Delete", "Delete", new {/* id=item.PrimaryKey */}) *@
+            @* </td> *@
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BankMVC.Auxiliary.Decode;
 using BankMVC.Auxiliary.Encode;
 using BankMVC.Model.Models;
@@ -73,6 +74,11 @@ namespace BankMVC.Services.Implementations
         public void AddTransaction(Transaction transaction)
         {
             _transactionRepository.Add(transaction);
+        }
+
+        public IEnumerable<Transaction> GetUserTransactions(string userName)
+        {
+            return _transactionRepository.GetMany(x => x.UserName == userName);
         }
     }
 }
