@@ -16,7 +16,14 @@ namespace BankMVC.Abstractions
         
         // post -- deducts amount of money from user account
         IActionResult DeductCashAmount(double amount);
-
+        
+        // get -- success message, redirect after 10 seconds
         IActionResult DeductSuccess();
+        
+        // get -- here user enters a value
+        IActionResult OtherAmount();
+        
+        // post -- deducts amount from user and redirect to success
+        IActionResult OtherAmount(IFormCollection collection);
     }
 }

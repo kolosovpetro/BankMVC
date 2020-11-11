@@ -76,9 +76,23 @@ namespace BankMVC.Controllers
             return RedirectToAction("DeductSuccess", "Cash");
         }
 
+        [HttpGet]
         public IActionResult DeductSuccess()
         {
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult OtherAmount()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult OtherAmount(IFormCollection collection)
+        {
+            var amount = double.Parse(collection["Amount"].ToString());
+            return RedirectToAction("DeductCashAmount", "Cash", new {amount});
         }
     }
 }

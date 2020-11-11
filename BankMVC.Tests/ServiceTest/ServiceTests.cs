@@ -14,8 +14,9 @@ namespace BankMVC.Tests.ServiceTest
         public void Database_Update_Test()
         {
             var context = new SqlServerContext();
-            var repo = new UserRepository(context);
-            var bankService = new BankService(repo);
+            var userRepository = new UserRepository(context);
+            var transactionRepository = new TransactionRepository(context);
+            var bankService = new BankService(userRepository, transactionRepository);
             
             var userName = "user1";
             var userPin = 1234;
