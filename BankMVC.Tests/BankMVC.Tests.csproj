@@ -14,10 +14,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="DecoderTest" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\BankMVC.Auxiliary\BankMVC.Auxiliary.csproj" />
     </ItemGroup>
 
