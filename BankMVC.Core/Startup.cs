@@ -52,7 +52,7 @@ namespace BankMVC
             {
                 endpoints.MapControllerRoute(
                     "default",
-                    "{controller=Bank}/{action=Login}/{id?}");
+                    "{controller=Login}/{action=Login}/{id?}");
             });
         }
     }
