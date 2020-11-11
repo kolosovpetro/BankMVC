@@ -25,4 +25,5 @@ RUN dotnet publish "BankMVC.Core.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "BankMVC.Core.dll"]
+#ENTRYPOINT ["dotnet", "BankMVC.Core.dll"]
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet BankMVC.Core.dll
