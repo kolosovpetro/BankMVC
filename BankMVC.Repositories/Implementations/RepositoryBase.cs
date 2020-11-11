@@ -60,7 +60,10 @@ namespace BankMVC.Repositories.Implementations
             return _dbSet.Where(where).AsEnumerable();
         }
 
-        public bool SaveChanges() => _dbContext.SaveChanges() >= 0;
+        public bool SaveChanges()
+        {
+            return _dbContext.SaveChanges() >= 0;
+        }
 
         public T Get(Expression<Func<T, bool>> where)
         {

@@ -16,14 +16,12 @@ namespace BankMVC.Tests.ServiceTest
             var context = new SqlServerContext();
             var repo = new UserRepository(context);
             var bankService = new BankService(repo);
-
-
+            
             var userName = "user1";
             var userPin = 1234;
             var amount = 50d;
             var encodedPin = bankService.Encode(userPin);
-
-
+            
             var user = bankService.GetUserByNameAndPin(userName, encodedPin);
 
             if (user == null)

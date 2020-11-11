@@ -123,7 +123,6 @@ namespace BankMVC.Controllers
                 _bankService.UpdateUser(user);
                 _bankService.DatabaseSaveChanges();
             }
-
             else
                 throw new InvalidOperationException("Not enough money");
 
