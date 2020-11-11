@@ -2,7 +2,7 @@
 
 namespace BankMVC.Model.Models
 {
-    public class User
+    public sealed class User
     {
         public int UserId { get; set; }
         public string UserName { get; set; }
@@ -10,7 +10,7 @@ namespace BankMVC.Model.Models
         public double Balance { get; set; }
         
         // navigational property
-        public virtual ICollection<Transaction> Transactions { get; set; }
+        public ICollection<Transaction> Transactions { get; set; }
 
         public User()
         {

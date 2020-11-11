@@ -38,3 +38,9 @@ enter sum and button “Cash”
 no enough money, you have to show appropriate message.
 Will be plus, if you will be able to create screen, where a user can see
 transaction history.
+
+## To do
+- Remove abstraction over BankService
+- Add to views links "Go to dashboard"
+- Verify user input and throw exceptions
+- Validate "Other sum input to be positive always"

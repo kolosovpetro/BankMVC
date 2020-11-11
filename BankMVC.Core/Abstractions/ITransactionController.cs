@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using BankMVC.Model.Models;
-using BankMVC.ViewModel.ViewModels;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BankMVC.Abstractions

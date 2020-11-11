@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using BankMVC.Auxiliary.Decode;
 using BankMVC.Auxiliary.Encode;
 using BankMVC.Model.Models;
 using BankMVC.Repositories.Repos;
-using BankMVC.Services.Interfaces;
 using BankMVC.ViewModel.ViewModels;
 
 namespace BankMVC.Services.Implementations
 {
-    public class BankService : IBankService
+    public class BankService
     {
         private readonly UserRepository _userRepository;
         private readonly TransactionRepository _transactionRepository;
@@ -44,14 +42,9 @@ namespace BankMVC.Services.Implementations
             return balanceModel;
         }
 
-        public string Encode(int pin)
+        public static string Encode(int pin)
         {
             return new Encoder().Encode(pin);
-        }
-
-        public int Decode(string pin)
-        {
-            return new Decoder().Decode(pin);
         }
 
         public User GetUserByNameAndPin(string name, string pin)

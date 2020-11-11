@@ -8,8 +8,6 @@ namespace BankMVC.Auxiliary.Encode
         private const string Alphabet = "ABCDEFGHIJ";
         private readonly StringBuilder _builder = new StringBuilder();
         
-
-        // VERIFY INPUT HERE AFTER ALL !!!
         public string Encode(int input)
         {
             var toString = input.ToString();

@@ -33,6 +33,10 @@ namespace BankMVC.Controllers
         {
             var formUserName = collection["UserName"].ToString();
             var formPin = collection["Pin"].ToString();
+
+            if (!int.TryParse(formPin, out _))
+                return RedirectToAction("Login", "Login");
+
             var model = new LoginViewModel
             {
                 UserName = formUserName,

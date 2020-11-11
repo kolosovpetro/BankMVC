@@ -2,7 +2,7 @@
 
 namespace BankMVC.Model.Models
 {
-    public class Transaction
+    public sealed class Transaction
     {
         public int TransactionId { get; set; }
         public string UserName { get; set; }    // foreign key
@@ -10,7 +10,7 @@ namespace BankMVC.Model.Models
         public DateTime TransactionDate { get; set; }
         
         // navigational property
-        public virtual User User { get; set; }
+        public User User { get; set; }
 
         public Transaction()
         {

@@ -1,4 +1,5 @@
-﻿using BankMVC.Abstractions;
+﻿using System;
+using BankMVC.Abstractions;
 using BankMVC.Services.Implementations;
 using BankMVC.ViewModel.ViewModels;
 using Microsoft.AspNetCore.Http;
@@ -30,10 +31,24 @@ namespace BankMVC.Controllers
         [HttpPost]
         public IActionResult CheckBalance(IFormCollection collection)
         {
-            var pin = int.Parse(collection["Pin"].ToString());
+            var formPin = collection["Pin"].ToString();
+            
+            if (!int.TryParse(formPin, out _))
+                return RedirectToAction("CheckBalance", "Balance");
+
+
             var userName = HttpContext.Session.GetString("CurrentUserName");
-            var balance = _bankService.GetBalance(userName, pin);
-            return RedirectToAction("BalanceDashboard", balance);
+            var parsedPin = int.Parse(formPin);
+            
+            try
+            {
+                var balance = _bankService.GetBalance(userName, parsedPin);
+                return RedirectToAction("BalanceDashboard", balance);
+            }
+            catch (InvalidOperationException)
+            {
+                return RedirectToAction("Login", "Login");
+            }
         }
 
         /// <summary>

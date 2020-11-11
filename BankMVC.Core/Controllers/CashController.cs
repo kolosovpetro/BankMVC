@@ -26,7 +26,7 @@ namespace BankMVC.Controllers
         {
             return View();
         }
-        
+
         /// <summary>
         /// Deducts amount of money from user account and redirects to Success view.
         /// </summary>
@@ -35,6 +35,10 @@ namespace BankMVC.Controllers
         {
             var formUserName = HttpContext.Session.GetString("CurrentUserName");
             var formPin = collection["Pin"].ToString();
+
+            if (!int.TryParse(formPin, out _))
+                return RedirectToAction("CashRequest", "Cash");
+
             var model = new LoginViewModel
             {
                 UserName = formUserName,
@@ -57,7 +61,7 @@ namespace BankMVC.Controllers
         {
             return View();
         }
-        
+
         /// <summary>
         /// Deducts amount from user. Creates transaction and saves changes to database.
         /// </summary>
@@ -81,7 +85,7 @@ namespace BankMVC.Controllers
             _bankService.DatabaseSaveChanges();
             return RedirectToAction("DeductSuccess", "Cash");
         }
-        
+
         /// <summary>
         /// get -- success message, redirect after 10 seconds
         /// </summary>
@@ -90,7 +94,7 @@ namespace BankMVC.Controllers
         {
             return View();
         }
-        
+
         /// <summary>
         /// get -- here user enters a value
         /// </summary>
@@ -99,7 +103,7 @@ namespace BankMVC.Controllers
         {
             return View();
         }
-        
+
         /// <summary>
         /// post -- deducts amount from user and redirect to success
         /// </summary>
