@@ -17,11 +17,11 @@ namespace BankMVC.Data.Context
         {
         }
 
-        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        // {
-        //     optionsBuilder.UseSqlServer(
-        //         "Data Source=DESKTOP-P87PH2B;Initial Catalog=BankDatabase;Integrated Security=true;");
-        // }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(
+                "Data Source=DESKTOP-P87PH2B;Initial Catalog=BankDatabase;Integrated Security=true;");
+        }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

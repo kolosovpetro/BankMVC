@@ -8,7 +8,7 @@ namespace BankMVC.Services.Extensions
     {
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-            return services.AddTransient<ILoginService, LoginService>();
+            return services.AddTransient<IBankService, BankService>();
         }
     }
 }

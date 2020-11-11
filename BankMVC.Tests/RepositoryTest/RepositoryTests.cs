@@ -30,5 +30,18 @@ namespace BankMVC.Tests.RepositoryTest
             repo.GetAll().ToList()[1].UserName.Should().Be("user2");
             repo.GetAll().ToList()[2].UserName.Should().Be("user3");
         }
+
+        [Test]
+        public void User_Update_Test()
+        {
+            var context = new SqlServerContext();
+            var repo = new UserRepository(context);
+            var first = repo.GetAll().FirstOrDefault();
+            first.Balance = 2000;
+            repo.Update(first);
+            repo.SaveChanges();
+            var check = repo.GetAll().First();
+            check.Balance.Should().Be(2000);
+        }
     }
 }

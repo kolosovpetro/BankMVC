@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq.Expressions;
 using BankMVC.Auxiliary.Decode;
 using BankMVC.Auxiliary.Encode;
 using BankMVC.Model.Models;
@@ -9,11 +8,11 @@ using BankMVC.ViewModel.ViewModels;
 
 namespace BankMVC.Services.Implementations
 {
-    public class LoginService : ILoginService
+    public class BankService : IBankService
     {
         private readonly UserRepository _userRepository;
 
-        public LoginService(UserRepository userRepository)
+        public BankService(UserRepository userRepository)
         {
             _userRepository = userRepository;
         }
@@ -52,9 +51,9 @@ namespace BankMVC.Services.Implementations
             return new Decoder().Decode(pin);
         }
 
-        public User GetUserByNameAndPin(Expression<Func<User, bool>> @where)
+        public User GetUserByNameAndPin(string name, string pin)
         {
-            var user = _userRepository.Get(where);
+            var user = _userRepository.Get(x => x.UserName == name && x.Pin == pin);
             return user;
         }
 

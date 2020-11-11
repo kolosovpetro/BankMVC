@@ -9,11 +9,11 @@ namespace BankMVC.Controllers
 {
     public class BankController : Controller, IBankController
     {
-        private readonly ILoginService _loginService;
+        private readonly IBankService _bankService;
 
-        public BankController(ILoginService loginService)
+        public BankController(IBankService bankService)
         {
-            _loginService = loginService;
+            _bankService = bankService;
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace BankMVC.Controllers
                 Pin = int.Parse(formPin)
             };
 
-            var validateModel = _loginService.ValidateUserNameAndPin(model);
+            var validateModel = _bankService.ValidateUserNameAndPin(model);
 
             if (validateModel != true)
                 return RedirectToAction("Login", "Bank");
@@ -76,7 +76,7 @@ namespace BankMVC.Controllers
         {
             var pin = int.Parse(collection["Pin"].ToString());
             var userName = HttpContext.Session.GetString("CurrentUserName");
-            var balance = _loginService.GetBalance(userName, pin);
+            var balance = _bankService.GetBalance(userName, pin);
             return RedirectToAction("BalanceDashboard", balance);
         }
 
@@ -106,17 +106,25 @@ namespace BankMVC.Controllers
         {
             var userName = HttpContext.Session.GetString("CurrentUserName");
             var userPin = HttpContext.Session.GetInt32("CurrentUserPin");
-            var encodedPin = _loginService.Encode((int) userPin!);
+            var encodedPin = _bankService.Encode((int) userPin!);
 
 
-            var user = _loginService.GetUserByNameAndPin(x => x.UserName == userName && x.Pin == encodedPin);
+            var user = _bankService.GetUserByNameAndPin(userName, encodedPin);
+
+            if (user == null)
+                throw new InvalidOperationException("User not found.");
+
             if (user.Balance >= amount)
-                user.Balance -= amount;
+            {
+                var balance = user.Balance - amount;
+                user.Balance = balance;
+                _bankService.UpdateUser(user);
+                _bankService.DatabaseSaveChanges();
+            }
+
             else
                 throw new InvalidOperationException("Not enough money");
-            
-            _loginService.UpdateUser(user);
-            _loginService.DatabaseSaveChanges();
+
             return View();
         }
     }
