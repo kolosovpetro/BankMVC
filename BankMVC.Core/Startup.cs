@@ -22,7 +22,8 @@ namespace BankMVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDataLayerWithSqlServer(Configuration);
+            //services.AddDataLayerWithSqlServer(Configuration);
+            services.AddDataLayerWithPostgreSql(Configuration);
             services.AddRepositories();
             services.AddServices();
             services.ConfigureSession(Configuration);

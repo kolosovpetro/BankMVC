@@ -22,9 +22,7 @@ namespace BankMVC.Data.Configuration
             builder.HasData(
                 new Transaction(1, "user1", 1000, DateTime.Now),
                 new Transaction(2, "user1", 1000, DateTime.Now),
-                new Transaction(3, "user1", 1000, DateTime.Now),
-                new Transaction(4, "user2", 555, DateTime.Now),
-                new Transaction(5, "user3", 777, DateTime.Now)
+                new Transaction(3, "user1", 1000, DateTime.Now)
             );
         }
     }
