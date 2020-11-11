@@ -23,9 +23,7 @@ namespace BankMVC.Data.Configuration
                 .HasColumnName("pin");
 
             builder.HasData(
-                new User(1, "user1", new Encoder().Encode(1234), 1000),
-                new User(2, "user2", new Encoder().Encode(4567), 555),
-                new User(3, "user3", new Encoder().Encode(4567), 777)
+                new User(1, "user1", new Encoder().Encode(1234), 3000)
             );
         }
     }
