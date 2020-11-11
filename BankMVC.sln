@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankMVC.Auxiliary", "BankMV
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankMVC.Tests", "BankMVC.Tests\BankMVC.Tests.csproj", "{BAF7B414-366D-4817-A0F5-0E68842BAD6C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankMVC.Repositories", "BankMVC.Repositories\BankMVC.Repositories.csproj", "{82C32731-FCE0-4E80-8508-76496BC8E66D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{BAF7B414-366D-4817-A0F5-0E68842BAD6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAF7B414-366D-4817-A0F5-0E68842BAD6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAF7B414-366D-4817-A0F5-0E68842BAD6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82C32731-FCE0-4E80-8508-76496BC8E66D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82C32731-FCE0-4E80-8508-76496BC8E66D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82C32731-FCE0-4E80-8508-76496BC8E66D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82C32731-FCE0-4E80-8508-76496BC8E66D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

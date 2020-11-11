@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using BankMVC.Data.Configuration;
+﻿using BankMVC.Data.Configuration;
 using BankMVC.Model.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,7 +20,7 @@ namespace BankMVC.Data.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-                "Data Source=DESKTOP-P87PH2B;Initial Catalog=ApiDatabase;Integrated Security=true;");
+                "Data Source=DESKTOP-P87PH2B;Initial Catalog=BankDatabase;Integrated Security=true;");
         }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
