@@ -23,5 +23,12 @@ namespace BankMVC.Model.Models
             Amount = amount;
             TransactionDate = transactionDate;
         }
+
+        public Transaction(string userName, double amount, DateTime transactionDate)
+        {
+            UserName = userName;
+            Amount = amount;
+            TransactionDate = transactionDate;
+        }
     }
 }

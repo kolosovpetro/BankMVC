@@ -1,7 +1,7 @@
 ﻿using System;
 using BankMVC.Abstractions;
-using BankMVC.Auxiliary.Decode;
 using BankMVC.Auxiliary.Encode;
+using BankMVC.Model.Models;
 using BankMVC.Services.Implementations;
 using BankMVC.ViewModel.ViewModels;
 using Microsoft.AspNetCore.Http;
@@ -64,12 +64,14 @@ namespace BankMVC.Controllers
                 throw new InvalidOperationException("Wrong user pin.");
             var encodedPin = new Encoder().Encode((int) pin);
             var user = _bankService.GetUserByNameAndPin(userName, encodedPin);
-            
+
             if (user == null)
                 throw new InvalidOperationException("Wrong user credits.");
 
             user.Balance -= amount;
             _bankService.UpdateUser(user);
+            var transaction = new Transaction(user.UserName, -amount, DateTime.Now);
+            _bankService.AddTransaction(transaction);
             _bankService.DatabaseSaveChanges();
             return RedirectToAction("DeductSuccess", "Cash");
         }

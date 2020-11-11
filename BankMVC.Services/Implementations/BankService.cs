@@ -11,10 +11,12 @@ namespace BankMVC.Services.Implementations
     public class BankService : IBankService
     {
         private readonly UserRepository _userRepository;
+        private readonly TransactionRepository _transactionRepository;
 
-        public BankService(UserRepository userRepository)
+        public BankService(UserRepository userRepository, TransactionRepository transactionRepository)
         {
             _userRepository = userRepository;
+            _transactionRepository = transactionRepository;
         }
 
         public bool ValidateUserNameAndPin(LoginViewModel model)
@@ -60,11 +62,17 @@ namespace BankMVC.Services.Implementations
         public void DatabaseSaveChanges()
         {
             _userRepository.SaveChanges();
+            _transactionRepository.SaveChanges();
         }
 
         public void UpdateUser(User user)
         {
             _userRepository.Update(user);
+        }
+
+        public void AddTransaction(Transaction transaction)
+        {
+            _transactionRepository.Add(transaction);
         }
     }
 }
