@@ -19,9 +19,9 @@ namespace BankMVC.Tests.ServiceTest
 
 
             var userName = "user1";
-            var userPin = "1234";
+            var userPin = 1234;
             var amount = 50d;
-            var encodedPin = bankService.Encode(int.Parse(userPin));
+            var encodedPin = bankService.Encode(userPin);
 
 
             var user = bankService.GetUserByNameAndPin(userName, encodedPin);

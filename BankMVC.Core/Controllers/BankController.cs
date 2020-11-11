@@ -106,9 +106,11 @@ namespace BankMVC.Controllers
         {
             var userName = HttpContext.Session.GetString("CurrentUserName");
             var userPin = HttpContext.Session.GetInt32("CurrentUserPin");
-            var encodedPin = _bankService.Encode((int) userPin!);
+            
+            if (userPin == null)
+                throw new InvalidOperationException("Invalid Pin.");
 
-
+            var encodedPin = _bankService.Encode((int) userPin);
             var user = _bankService.GetUserByNameAndPin(userName, encodedPin);
 
             if (user == null)

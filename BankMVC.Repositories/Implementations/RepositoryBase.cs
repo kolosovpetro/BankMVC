@@ -20,28 +20,52 @@ namespace BankMVC.Repositories.Implementations
             _dbSet = _dbContext.Set<T>();
         }
 
-        public void Add(T entity) => _dbSet.Add(entity);
-        
-        public void Delete(T entity) => _dbSet.Remove(entity);
+        public void Add(T entity)
+        {
+            _dbSet.Add(entity);
+        }
+
+        public void Delete(T entity)
+        {
+            _dbSet.Remove(entity);
+        }
 
         public async Task SaveChangesAsync()
         {
             await _dbContext.SaveChangesAsync();
         }
 
-        public T GetById(int id) => _dbSet.Find(id);
+        public T GetById(int id)
+        {
+            return _dbSet.Find(id);
+        }
 
-        public async Task<T> GetByIdAsync(int id) => await _dbSet.FindAsync(id);
+        public async Task<T> GetByIdAsync(int id)
+        {
+            return await _dbSet.FindAsync(id);
+        }
 
-        public IEnumerable<T> GetAll() => _dbSet.AsEnumerable();
+        public IEnumerable<T> GetAll()
+        {
+            return _dbSet.AsEnumerable();
+        }
 
-        public async Task<IEnumerable<T>> GetAllAsync() => await _dbSet.ToListAsync();
+        public async Task<IEnumerable<T>> GetAllAsync()
+        {
+            return await _dbSet.ToListAsync();
+        }
 
-        public IEnumerable<T> GetMany(Expression<Func<T, bool>> where) => _dbSet.Where(@where).AsEnumerable();
+        public IEnumerable<T> GetMany(Expression<Func<T, bool>> where)
+        {
+            return _dbSet.Where(where).AsEnumerable();
+        }
 
         public bool SaveChanges() => _dbContext.SaveChanges() >= 0;
 
-        public T Get(Expression<Func<T, bool>> where) => _dbSet.Where(@where).FirstOrDefault();
+        public T Get(Expression<Func<T, bool>> where)
+        {
+            return _dbSet.Where(where).FirstOrDefault();
+        }
 
         public void Update(T entity)
         {
