@@ -18,6 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\BankMVC.Auxiliary\BankMVC.Auxiliary.csproj" />
       <ProjectReference Include="..\BankMVC.Model\BankMVC.Model.csproj" />
     </ItemGroup>
 

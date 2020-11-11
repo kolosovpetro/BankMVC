@@ -10,5 +10,16 @@ namespace BankMVC.Model.Models
         
         // navigational property
         public virtual User User { get; set; }
+
+        public Transaction()
+        {
+        }
+
+        public Transaction(string userName, double amount, DateTime transactionDate)
+        {
+            UserName = userName;
+            Amount = amount;
+            TransactionDate = transactionDate;
+        }
     }
 }
