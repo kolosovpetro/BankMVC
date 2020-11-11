@@ -56,7 +56,15 @@ namespace BankMVC.Controllers
         [HttpPost]
         public IActionResult CheckBalance(IFormCollection collection)
         {
-            throw new System.NotImplementedException();
+            var pin = int.Parse(collection["Pin"].ToString());
+            var userName = HttpContext.Session.GetString("CurrentUserName");
+            var balance = _loginService.GetBalance(userName, pin);
+            return RedirectToAction("BalanceDashboard", balance);
+        }
+
+        public IActionResult BalanceDashboard(UserBalanceViewModel model)
+        {
+            return View(model);
         }
     }
 }

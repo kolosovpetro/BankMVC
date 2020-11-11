@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BankMVC.ViewModel.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BankMVC.Abstractions
@@ -15,6 +16,8 @@ namespace BankMVC.Abstractions
         IActionResult CheckBalance();
 
         IActionResult CheckBalance(IFormCollection collection);
+
+        IActionResult BalanceDashboard(UserBalanceViewModel model);
         // // balance get
         // IActionResult Balance();
         // // balance post
