@@ -6,6 +6,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankMVC.Model", "BankMVC.Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankMVC.Data", "BankMVC.Data\BankMVC.Data.csproj", "{B0DAA522-2E63-4301-B63F-E60AEFD436F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankMVC.Auxiliary", "BankMVC.Auxiliary\BankMVC.Auxiliary.csproj", "{654AC414-859F-43DD-9010-4EC6E47C1DEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankMVC.Tests", "BankMVC.Tests\BankMVC.Tests.csproj", "{BAF7B414-366D-4817-A0F5-0E68842BAD6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{B0DAA522-2E63-4301-B63F-E60AEFD436F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0DAA522-2E63-4301-B63F-E60AEFD436F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0DAA522-2E63-4301-B63F-E60AEFD436F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{654AC414-859F-43DD-9010-4EC6E47C1DEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{654AC414-859F-43DD-9010-4EC6E47C1DEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{654AC414-859F-43DD-9010-4EC6E47C1DEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{654AC414-859F-43DD-9010-4EC6E47C1DEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAF7B414-366D-4817-A0F5-0E68842BAD6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAF7B414-366D-4817-A0F5-0E68842BAD6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAF7B414-366D-4817-A0F5-0E68842BAD6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAF7B414-366D-4817-A0F5-0E68842BAD6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
