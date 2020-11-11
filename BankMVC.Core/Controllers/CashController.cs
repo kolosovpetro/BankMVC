@@ -26,7 +26,8 @@ namespace BankMVC.Controllers
         {
             return View();
         }
-
+        
+        
         [HttpPost]
         public IActionResult CashRequest(IFormCollection collection)
         {
