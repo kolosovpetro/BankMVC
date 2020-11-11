@@ -8,13 +8,13 @@
 <h2>Cash withdraw</h2>
 <ul>
     <li>
-        @Html.ActionLink("50", "WithdrawMoney", "Cash", (double) 50)
+        @Html.ActionLink("50", "DeductCashAmount", "Cash", new {amount = 50})
     </li>
     <li>
-        @Html.ActionLink("100", "WithdrawMoney", "Cash", (double) 100)
+        @Html.ActionLink("100", "DeductCashAmount", "Cash", new {amount = 100})
     </li>
     <li>
-        @Html.ActionLink("200", "WithdrawMoney", "Cash", (double) 200)
+        @Html.ActionLink("200", "DeductCashAmount", "Cash", new {amount = 200})
     </li>
     <li>
         <a href="#">Other sum</a>

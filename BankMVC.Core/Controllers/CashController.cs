@@ -1,4 +1,7 @@
-﻿using BankMVC.Abstractions;
+﻿using System;
+using BankMVC.Abstractions;
+using BankMVC.Auxiliary.Decode;
+using BankMVC.Auxiliary.Encode;
 using BankMVC.Services.Implementations;
 using BankMVC.ViewModel.ViewModels;
 using Microsoft.AspNetCore.Http;
@@ -39,7 +42,7 @@ namespace BankMVC.Controllers
 
             if (validateModel != true)
                 return RedirectToAction("Login", "Login");
-            
+
             return RedirectToAction("CashRequestMenu", "Cash");
         }
 
@@ -48,6 +51,30 @@ namespace BankMVC.Controllers
         /// </summary>
         [HttpGet]
         public IActionResult CashRequestMenu()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult DeductCashAmount(double amount)
+        {
+            var userName = HttpContext.Session.GetString("CurrentUserName");
+            var pin = HttpContext.Session.GetInt32("CurrentUserPin");
+            if (pin == null)
+                throw new InvalidOperationException("Wrong user pin.");
+            var encodedPin = new Encoder().Encode((int) pin);
+            var user = _bankService.GetUserByNameAndPin(userName, encodedPin);
+            
+            if (user == null)
+                throw new InvalidOperationException("Wrong user credits.");
+
+            user.Balance -= amount;
+            _bankService.UpdateUser(user);
+            _bankService.DatabaseSaveChanges();
+            return RedirectToAction("DeductSuccess", "Cash");
+        }
+
+        public IActionResult DeductSuccess()
         {
             return View();
         }
