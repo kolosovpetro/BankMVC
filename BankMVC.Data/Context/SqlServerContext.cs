@@ -1,4 +1,6 @@
-﻿using BankMVC.Model.Models;
+﻿using System.Reflection;
+using BankMVC.Data.Configuration;
+using BankMVC.Model.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BankMVC.Data.Context
@@ -20,6 +22,12 @@ namespace BankMVC.Data.Context
         {
             optionsBuilder.UseSqlServer(
                 "Data Source=DESKTOP-P87PH2B;Initial Catalog=ApiDatabase;Integrated Security=true;");
+        }
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new TransactionConfiguration());
         }
     }
 }

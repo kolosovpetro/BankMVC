@@ -4,6 +4,7 @@ namespace BankMVC.Model.Models
 {
     public class User
     {
+        public int UserId { get; set; }
         public string UserName { get; set; }
         public string Pin { get; set; }        // pin as a string since it will be decrypted
         public double Balance { get; set; }
@@ -15,8 +16,9 @@ namespace BankMVC.Model.Models
         {
         }
 
-        public User(string userName, string pin, double balance)
+        public User(int userId, string userName, string pin, double balance)
         {
+            UserId = userId;
             UserName = userName;
             Pin = pin;
             Balance = balance;

@@ -5,21 +5,24 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BankMVC.Data.Configuration
 {
-    public class TransactionConfiguration : IEntityTypeConfiguration<User>
+    public class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<Transaction> builder)
         {
+            builder.HasKey(e => e.TransactionId)
+                .HasName("transaction_pkey");
             builder.Property(e => e.UserName)
                 .HasColumnName("user_name");
-            builder.Property(e => e.Pin)
+
+            builder.Property(e => e.Amount)
                 .HasColumnName("pin");
-            builder.Property(e => e.Balance)
+            builder.Property(e => e.TransactionDate)
                 .HasColumnName("balance");
 
             builder.HasData(
-                new Transaction("user1", 1000, DateTime.Now),
-                new Transaction("user2", 555, DateTime.Now),
-                new Transaction("user3", 777, DateTime.Now)
+                new Transaction(1, "user1", 1000, DateTime.Now),
+                new Transaction(2, "user2", 555, DateTime.Now),
+                new Transaction(3, "user3", 777, DateTime.Now)
             );
         }
     }
