@@ -5,5 +5,6 @@ namespace BankMVC.Services.Interfaces
     public interface ILoginService
     {
         bool ValidateUserNameAndPin(LoginViewModel model);
+        UserBalanceViewModel GetBalance(string userName, int pin);
     }
 }

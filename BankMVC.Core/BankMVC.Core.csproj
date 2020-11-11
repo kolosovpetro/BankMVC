@@ -12,4 +12,8 @@
       <ProjectReference Include="..\BankMVC.ViewModel\BankMVC.ViewModel.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Extensions" />
+    </ItemGroup>
+
 </Project>

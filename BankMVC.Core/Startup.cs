@@ -1,4 +1,5 @@
 using BankMVC.Data.Extensions;
+using BankMVC.Extensions;
 using BankMVC.Repositories.Extensions;
 using BankMVC.Services.Extensions;
 using Microsoft.AspNetCore.Builder;
@@ -24,6 +25,7 @@ namespace BankMVC
             services.AddDataLayerWithSqlServer(Configuration);
             services.AddRepositories();
             services.AddServices();
+            services.ConfigureSession(Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -40,6 +42,7 @@ namespace BankMVC
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseRouting();
 

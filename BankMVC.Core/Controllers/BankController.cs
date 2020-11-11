@@ -37,7 +37,26 @@ namespace BankMVC.Controllers
             if (validateModel != true)
                 return RedirectToAction("Login", "Bank");
 
-            return RedirectToAction("Index", "Home");
+            HttpContext.Session.SetString("CurrentUserName", model.UserName);
+            return RedirectToAction("SuccessLoginScreen", "Bank");
+        }
+        
+        [HttpGet]
+        public IActionResult SuccessLoginScreen()
+        {
+            return View();
+        }
+        
+        [HttpGet]
+        public IActionResult CheckBalance()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public IActionResult CheckBalance(IFormCollection collection)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
