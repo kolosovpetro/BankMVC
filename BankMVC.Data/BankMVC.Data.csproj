@@ -20,6 +20,11 @@
     <ItemGroup>
       <ProjectReference Include="..\BankMVC.Auxiliary\BankMVC.Auxiliary.csproj" />
       <ProjectReference Include="..\BankMVC.Model\BankMVC.Model.csproj" />
+      <ProjectReference Include="..\BankMVC.Repositories\BankMVC.Repositories.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Extensions" />
     </ItemGroup>
 
 </Project>

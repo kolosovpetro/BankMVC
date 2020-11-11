@@ -1,3 +1,5 @@
+using BankMVC.Data.Extensions;
+using BankMVC.Repositories.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -18,6 +20,8 @@ namespace BankMVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDataLayerWithSqlServer(Configuration);
+            services.AddRepositories();
         }
         
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -42,8 +46,8 @@ namespace BankMVC
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Bank}/{action=Login}/{id?}");
+                    "default",
+                    "{controller=Bank}/{action=Login}/{id?}");
             });
         }
     }
