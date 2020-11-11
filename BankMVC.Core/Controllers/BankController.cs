@@ -1,5 +1,4 @@
-﻿using System;
-using BankMVC.Abstractions;
+﻿using BankMVC.Abstractions;
 using BankMVC.Services.Interfaces;
 using BankMVC.ViewModel.ViewModels;
 using Microsoft.AspNetCore.Http;
@@ -90,6 +89,34 @@ namespace BankMVC.Controllers
         }
 
         /// <summary>
+        /// Asks pin when user goes to cash withdraw
+        /// </summary>
+        [HttpGet]
+        public IActionResult MoneyWithdrawRequest()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult MoneyWithdrawRequest(IFormCollection collection)
+        {
+            var formUserName = HttpContext.Session.GetString("CurrentUserName");
+            var formPin = collection["Pin"].ToString();
+            var model = new LoginViewModel
+            {
+                UserName = formUserName,
+                Pin = int.Parse(formPin)
+            };
+
+            var validateModel = _bankService.ValidateUserNameAndPin(model);
+
+            if (validateModel != true)
+                return RedirectToAction("Login", "Bank");
+            
+            return RedirectToAction("CashWithdrawMenu", "Bank");
+        }
+
+        /// <summary>
         /// View of cash withdraw. Shows 50, 100, 200, Other Sum.
         /// </summary>
         [HttpGet]
@@ -98,35 +125,35 @@ namespace BankMVC.Controllers
             return View();
         }
 
-        /// <summary>
-        /// Withdraws from user account concrete value
-        /// </summary>
-        [HttpGet]
-        public IActionResult WithdrawMoney(double amount)
-        {
-            var userName = HttpContext.Session.GetString("CurrentUserName");
-            var userPin = HttpContext.Session.GetInt32("CurrentUserPin");
-            
-            if (userPin == null)
-                throw new InvalidOperationException("Invalid Pin.");
-
-            var encodedPin = _bankService.Encode((int) userPin);
-            var user = _bankService.GetUserByNameAndPin(userName, encodedPin);
-
-            if (user == null)
-                throw new InvalidOperationException("User not found.");
-
-            if (user.Balance >= amount)
-            {
-                var balance = user.Balance - amount;
-                user.Balance = balance;
-                _bankService.UpdateUser(user);
-                _bankService.DatabaseSaveChanges();
-            }
-            else
-                throw new InvalidOperationException("Not enough money");
-
-            return View();
-        }
+        // /// <summary>
+        // /// Withdraws from user account concrete value
+        // /// </summary>
+        // [HttpGet]
+        // public IActionResult WithdrawMoney(double amount)
+        // {
+        //     var userName = HttpContext.Session.GetString("CurrentUserName");
+        //     var userPin = HttpContext.Session.GetInt32("CurrentUserPin");
+        //     
+        //     if (userPin == null)
+        //         throw new InvalidOperationException("Invalid Pin.");
+        //
+        //     var encodedPin = _bankService.Encode((int) userPin);
+        //     var user = _bankService.GetUserByNameAndPin(userName, encodedPin);
+        //
+        //     if (user == null)
+        //         throw new InvalidOperationException("User not found.");
+        //
+        //     if (user.Balance >= amount)
+        //     {
+        //         var balance = user.Balance - amount;
+        //         user.Balance = balance;
+        //         _bankService.UpdateUser(user);
+        //         _bankService.DatabaseSaveChanges();
+        //     }
+        //     else
+        //         throw new InvalidOperationException("Not enough money");
+        //
+        //     return View();
+        // }
     }
 }

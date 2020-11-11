@@ -1,0 +1,23 @@
+﻿@model BankMVC.ViewModel.ViewModels.CashWithdrawRequest
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>title</h2>
+
+<h2>Enter Pin</h2>
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Pin"></label>
+                <input asp-for="Pin" class="form-control"/>
+                <span asp-validation-for="Pin" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Check balance</button>
+        </form>
+    </div>
+</div>
