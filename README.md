@@ -35,3 +35,7 @@ In the following assignment you will be required to create a simple web applicat
 - If a user takes cash, you must check balance before. If there is no enough money, you have to show appropriate message.
 
 Will be plus, if you will be able to create screen, where a user can see transaction history.
+
+## Online demo
+
+- Heroku: https://bank-mvc.herokuapp.com/
