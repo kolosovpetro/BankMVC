@@ -5,13 +5,20 @@ namespace BankMVC.Abstractions
 {
     public interface ILoginController
     {
-        // get -- user enters username and pin
+        /// <summary>
+        /// First screen. User enters username and pin. Get request.
+        /// </summary>
         IActionResult Login();
 
-        // post -- user clicks submit
+        /// <summary>
+        /// Post request from first screen. In case user entered valid data, redirects to dashboard,
+        /// else shows first screen again.
+        /// </summary>
         IActionResult Login(IFormCollection collection);
         
-        // get -- redirects to user dashboard
+        /// <summary>
+        /// Second screen. User dashboard. Contains buttons: Balance, Cash, Transactions. Get Request.
+        /// </summary>
         IActionResult SuccessLoginScreen();
     }
 }

@@ -6,13 +6,20 @@ namespace BankMVC.Abstractions
 {
     public interface IBalanceController
     {
-        // get -- user clicks Balance
+        /// <summary>
+        /// It is pin validation form, after user clicks to Balance on first screen. Get Request.
+        /// </summary>
         IActionResult CheckBalance();
         
-        // post -- user enters Pin
+        /// <summary>
+        /// Post request from pin validation form. In case user enters valid data -- shows balance,
+        /// else redirects to login form.
+        /// </summary>
         IActionResult CheckBalance(IFormCollection collection);
         
-        // get -- user in dashboard if Pin is correct
+        /// <summary>
+        /// User balance dashboard. Get request.
+        /// </summary>
         IActionResult BalanceDashboard(UserBalanceViewModel model);
     }
 }
