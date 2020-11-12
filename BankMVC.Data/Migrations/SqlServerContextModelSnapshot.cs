@@ -53,22 +53,22 @@ namespace BankMVC.Data.Migrations
                         {
                             TransactionId = 1,
                             Amount = 1000.0,
-                            TransactionDate = new DateTime(2020, 11, 11, 14, 28, 58, 827, DateTimeKind.Local).AddTicks(3242),
+                            TransactionDate = new DateTime(2020, 11, 12, 1, 50, 57, 923, DateTimeKind.Local).AddTicks(4399),
                             UserName = "user1"
                         },
                         new
                         {
                             TransactionId = 2,
-                            Amount = 555.0,
-                            TransactionDate = new DateTime(2020, 11, 11, 14, 28, 58, 832, DateTimeKind.Local).AddTicks(2350),
-                            UserName = "user2"
+                            Amount = 1000.0,
+                            TransactionDate = new DateTime(2020, 11, 12, 1, 50, 57, 927, DateTimeKind.Local).AddTicks(9627),
+                            UserName = "user1"
                         },
                         new
                         {
                             TransactionId = 3,
-                            Amount = 777.0,
-                            TransactionDate = new DateTime(2020, 11, 11, 14, 28, 58, 832, DateTimeKind.Local).AddTicks(2497),
-                            UserName = "user3"
+                            Amount = 1000.0,
+                            TransactionDate = new DateTime(2020, 11, 12, 1, 50, 57, 927, DateTimeKind.Local).AddTicks(9807),
+                            UserName = "user1"
                         });
                 });
 
@@ -100,23 +100,9 @@ namespace BankMVC.Data.Migrations
                         new
                         {
                             UserId = 1,
-                            Balance = 1000.0,
+                            Balance = 3000.0,
                             Pin = "BCDE",
                             UserName = "user1"
-                        },
-                        new
-                        {
-                            UserId = 2,
-                            Balance = 555.0,
-                            Pin = "EFGH",
-                            UserName = "user2"
-                        },
-                        new
-                        {
-                            UserId = 3,
-                            Balance = 777.0,
-                            Pin = "EFGH",
-                            UserName = "user3"
                         });
                 });
 

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BankMVC.Data.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class SqlServerMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -49,20 +49,15 @@ namespace BankMVC.Data.Migrations
                 columns: new[] { "TransactionId", "pin", "balance", "UserId", "user_name" },
                 values: new object[,]
                 {
-                    { 1, 1000.0, new DateTime(2020, 11, 11, 14, 28, 58, 827, DateTimeKind.Local).AddTicks(3242), null, "user1" },
-                    { 2, 555.0, new DateTime(2020, 11, 11, 14, 28, 58, 832, DateTimeKind.Local).AddTicks(2350), null, "user2" },
-                    { 3, 777.0, new DateTime(2020, 11, 11, 14, 28, 58, 832, DateTimeKind.Local).AddTicks(2497), null, "user3" }
+                    { 1, 1000.0, new DateTime(2020, 11, 12, 1, 50, 57, 923, DateTimeKind.Local).AddTicks(4399), null, "user1" },
+                    { 2, 1000.0, new DateTime(2020, 11, 12, 1, 50, 57, 927, DateTimeKind.Local).AddTicks(9627), null, "user1" },
+                    { 3, 1000.0, new DateTime(2020, 11, 12, 1, 50, 57, 927, DateTimeKind.Local).AddTicks(9807), null, "user1" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "UserId", "balance", "pin", "user_name" },
-                values: new object[,]
-                {
-                    { 1, 1000.0, "BCDE", "user1" },
-                    { 2, 555.0, "EFGH", "user2" },
-                    { 3, 777.0, "EFGH", "user3" }
-                });
+                values: new object[] { 1, 3000.0, "BCDE", "user1" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Transactions_UserId",
