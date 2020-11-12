@@ -54,7 +54,7 @@ namespace BankMVC.Controllers
         {
             var userName = HttpContext.Session.GetString("CurrentUserName");
             var transactions = _bankService
-                .GetUserTransactions(userName).OrderBy(x => x.TransactionDate);
+                .GetUserTransactions(userName).OrderBy(x => x.TransactionId);
             return View(transactions);
         }
     }

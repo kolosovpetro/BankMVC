@@ -38,4 +38,4 @@ Will be plus, if you will be able to create screen, where a user can see transac
 
 ## Online demo
 
-- Heroku: https://bank-mvc.herokuapp.com/
+- Heroku: https://bank-mvc.herokuapp.com
