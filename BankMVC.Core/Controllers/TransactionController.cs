@@ -1,4 +1,5 @@
-﻿using BankMVC.Abstractions;
+﻿using System.Linq;
+using BankMVC.Abstractions;
 using BankMVC.Auxiliary.Encode;
 using BankMVC.Services.Implementations;
 using Microsoft.AspNetCore.Http;
@@ -41,7 +42,7 @@ namespace BankMVC.Controllers
             var user = _bankService.GetUserByNameAndPin(userName, encodedPin);
             if (user == null)
                 return RedirectToAction("Login", "Login");
-            
+
             return RedirectToAction("UserTransactions", "Transaction");
         }
 
@@ -53,7 +54,7 @@ namespace BankMVC.Controllers
         {
             var userName = HttpContext.Session.GetString("CurrentUserName");
             var transactions = _bankService
-                .GetUserTransactions(userName);
+                .GetUserTransactions(userName).OrderBy(x => x.TransactionDate);
             return View(transactions);
         }
     }
