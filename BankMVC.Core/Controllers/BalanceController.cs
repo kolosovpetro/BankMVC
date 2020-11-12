@@ -17,7 +17,7 @@ namespace BankMVC.Controllers
         }
 
         /// <summary>
-        /// View returned if user chooses to check balance
+        /// It is pin validation form, after user clicks to Balance on first screen. Get Request.
         /// </summary>
         [HttpGet]
         public IActionResult CheckBalance()
@@ -26,7 +26,8 @@ namespace BankMVC.Controllers
         }
 
         /// <summary>
-        /// Post request when user enters pin in order to check balance.
+        /// Post request from pin validation form. In case user enters valid data -- shows balance,
+        /// else redirects to login form.
         /// </summary>
         [HttpPost]
         public IActionResult CheckBalance(IFormCollection collection)
@@ -52,7 +53,7 @@ namespace BankMVC.Controllers
         }
 
         /// <summary>
-        /// View of user balance dash board, GET request.
+        /// User balance dashboard. Get request.
         /// </summary>
         [HttpGet]
         public IActionResult BalanceDashboard(UserBalanceViewModel model)

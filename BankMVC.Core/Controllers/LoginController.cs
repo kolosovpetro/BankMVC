@@ -16,9 +16,8 @@ namespace BankMVC.Controllers
         }
 
         /// <summary>
-        /// Redirects to the login form
+        /// First screen. User enters username and pin. Get request.
         /// </summary>
-        /// <returns></returns>
         [HttpGet]
         public IActionResult Login()
         {
@@ -26,7 +25,8 @@ namespace BankMVC.Controllers
         }
 
         /// <summary>
-        /// Post request from login form. Redirects to user dashboard.
+        /// Post request from first screen. In case user entered valid data, redirects to dashboard,
+        /// else shows first screen again.
         /// </summary>
         [HttpPost]
         public IActionResult Login(IFormCollection collection)
@@ -54,7 +54,7 @@ namespace BankMVC.Controllers
         }
 
         /// <summary>
-        /// View of user dashboard, GET request.
+        /// Second screen. User dashboard. Contains buttons: Balance, Cash, Transactions. Get Request.
         /// </summary>
         [HttpGet]
         public IActionResult SuccessLoginScreen()

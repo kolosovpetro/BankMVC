@@ -17,7 +17,7 @@ namespace BankMVC.Controllers
         }
 
         /// <summary>
-        /// Get request. User enters pin here.
+        /// View, shown when user clicks to Transactions on the first screen. Asks user for pin.
         /// </summary>
         [HttpGet]
         public IActionResult DisplayTransactions()
@@ -26,7 +26,8 @@ namespace BankMVC.Controllers
         }
 
         /// <summary>
-        /// Post request. User clicks submit here.
+        /// Post request when user enters pin in order to check transactions. If user enters valid
+        /// data, then redirects to User transactions. Else redirects to login form.
         /// </summary>
         [HttpPost]
         public IActionResult DisplayTransactions(IFormCollection collection)
@@ -47,7 +48,7 @@ namespace BankMVC.Controllers
         }
 
         /// <summary>
-        /// Get request. User is redirected to list of his transactions.
+        /// Returns a list of current user transactions.
         /// </summary>
         [HttpGet]
         public IActionResult UserTransactions()

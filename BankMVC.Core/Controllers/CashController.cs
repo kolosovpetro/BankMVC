@@ -19,7 +19,7 @@ namespace BankMVC.Controllers
         }
 
         /// <summary>
-        /// Asks pin when user goes to cash withdraw
+        /// View, shown when user clicks Cash on the first screen. Asks a pin.
         /// </summary>
         [HttpGet]
         public IActionResult CashRequest()
@@ -28,7 +28,8 @@ namespace BankMVC.Controllers
         }
 
         /// <summary>
-        /// Deducts amount of money from user account and redirects to Success view.
+        /// Post request for pin validation form above. If user enters valida data, redirects user to
+        /// cash withdraw menu, else redirects to login form.
         /// </summary>
         [HttpPost]
         public IActionResult CashRequest(IFormCollection collection)
@@ -54,7 +55,7 @@ namespace BankMVC.Controllers
         }
 
         /// <summary>
-        /// View of cash withdraw. Shows 50, 100, 200, Other Sum.
+        /// Cash withdraw menu. Contains buttons: 50, 100, 200, Other sum.
         /// </summary>
         [HttpGet]
         public IActionResult CashRequestMenu()
@@ -63,7 +64,9 @@ namespace BankMVC.Controllers
         }
 
         /// <summary>
-        /// Deducts amount from user. Creates transaction and saves changes to database.
+        /// Post request from cash withdraw menu. Deducts particular amount from user account
+        /// and creates new transaction, saves it all to database. In case of amount is lesser
+        /// than zero or grater than user's balance -- redirects back to cash withdraw menu.
         /// </summary>
         [HttpGet]
         public IActionResult DeductCashAmount(double amount)
@@ -92,7 +95,7 @@ namespace BankMVC.Controllers
         }
 
         /// <summary>
-        /// get -- success message, redirect after 10 seconds
+        /// Notifies user that transaction is proceeded. Redirects to login form after 10 seconds.
         /// </summary>
         [HttpGet]
         public IActionResult DeductSuccess()
@@ -101,7 +104,8 @@ namespace BankMVC.Controllers
         }
 
         /// <summary>
-        /// get -- here user enters a value
+        /// View, shown when user clicks Other amount in cash withdraw menu. Contains field "Amount"
+        /// and button "Cash.
         /// </summary>
         [HttpGet]
         public IActionResult OtherAmount()
@@ -110,7 +114,9 @@ namespace BankMVC.Controllers
         }
 
         /// <summary>
-        /// post -- deducts amount from user and redirect to success
+        /// Post request from Other amount view. Verifies that balance and amount is ok,
+        /// then deducts amount from user account and creates new transaction. Finally,
+        /// saves all to database.
         /// </summary>
         [HttpPost]
         public IActionResult OtherAmount(IFormCollection collection)
