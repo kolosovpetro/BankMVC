@@ -2,8 +2,6 @@ using BankMVC.Data.Extensions;
 using BankMVC.Extensions;
 using BankMVC.Repositories.Extensions;
 using BankMVC.Services.Extensions;
-using GoogleReCaptcha.V3;
-using GoogleReCaptcha.V3.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -29,7 +27,6 @@ namespace BankMVC
             services.AddRepositories();
             services.AddServices();
             services.ConfigureSession(Configuration);
-            services.AddHttpClient<ICaptchaValidator, GoogleReCaptchaValidator>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

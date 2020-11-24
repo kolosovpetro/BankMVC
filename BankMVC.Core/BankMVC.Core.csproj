@@ -8,7 +8,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\BankMVC.Captcha\BankMVC.Captcha.csproj" />
       <ProjectReference Include="..\BankMVC.Data\BankMVC.Data.csproj" />
       <ProjectReference Include="..\BankMVC.Repositories\BankMVC.Repositories.csproj" />
       <ProjectReference Include="..\BankMVC.Services\BankMVC.Services.csproj" />
@@ -25,7 +24,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="GoogleReCaptcha.V3" Version="1.3.0" />
       <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
       <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     </ItemGroup>
