@@ -1,6 +1,7 @@
 ﻿using BankMVC.Abstractions;
 using BankMVC.Services.Implementations;
 using BankMVC.ViewModel.ViewModels;
+using GoogleReCaptcha.V3.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,10 +10,12 @@ namespace BankMVC.Controllers
     public class LoginController : Controller, ILoginController
     {
         private readonly BankService _bankService;
+        private readonly ICaptchaValidator _captchaValidator;
 
-        public LoginController(BankService bankService)
+        public LoginController(BankService bankService, ICaptchaValidator captchaValidator)
         {
             _bankService = bankService;
+            _captchaValidator = captchaValidator;
         }
 
         /// <summary>
@@ -29,7 +32,7 @@ namespace BankMVC.Controllers
         /// else shows first screen again.
         /// </summary>
         [HttpPost]
-        public IActionResult Login(IFormCollection collection)
+        public IActionResult Login(IFormCollection collection, string captcha)
         {
             var formUserName = collection["UserName"].ToString();
             var formPin = collection["Pin"].ToString();
@@ -50,7 +53,11 @@ namespace BankMVC.Controllers
 
             HttpContext.Session.SetString("CurrentUserName", model.UserName);
             HttpContext.Session.SetInt32("CurrentUserPin", model.Pin);
-            return RedirectToAction("SuccessLoginScreen", "Login");
+            
+            if (_captchaValidator.IsCaptchaPassedAsync(captcha).Result)
+                return RedirectToAction("SuccessLoginScreen", "Login");
+            
+            return RedirectToAction("Login", "Login");
         }
 
         /// <summary>

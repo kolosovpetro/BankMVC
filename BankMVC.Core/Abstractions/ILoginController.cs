@@ -14,7 +14,7 @@ namespace BankMVC.Abstractions
         /// Post request from first screen. In case user entered valid data, redirects to dashboard,
         /// else shows first screen again.
         /// </summary>
-        IActionResult Login(IFormCollection collection);
+        IActionResult Login(IFormCollection collection, string captcha);
         
         /// <summary>
         /// Second screen. User dashboard. Contains buttons: Balance, Cash, Transactions. Get Request.
